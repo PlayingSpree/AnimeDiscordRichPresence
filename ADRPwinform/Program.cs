@@ -12,6 +12,7 @@ namespace ADRPwinform
         static NotifyIcon notifyIcon = new NotifyIcon();
         static bool Visible = true;
         static bool stop = false;
+        static ToolStripItem HideButton;
         static void Main(string[] args)
         {
             Thread notifyThread = new Thread(
@@ -27,11 +28,19 @@ namespace ADRPwinform
                 notifyIcon.Text = "AnimeDiscordRichPresence";
 
                 var contextMenu = new ContextMenuStrip();
-                contextMenu.Items.Add("Exit", null, (s, e) => {
+                HideButton = contextMenu.Items.Add("Show Console", null, (s, e) =>
+                {
+                    Visible = !Visible;
+                    SetConsoleWindowVisibility(Visible);
+                });
+
+                contextMenu.Items.Add("Exit", null, (s, e) =>
+                {
                     stop = true;
                     notifyIcon.Dispose();
-                    Application.Exit(); 
+                    Application.Exit();
                 });
+
                 notifyIcon.ContextMenuStrip = contextMenu;
 
                 Application.Run();
@@ -55,8 +64,22 @@ namespace ADRPwinform
             IntPtr hWnd = FindWindow(null, Console.Title);
             if (hWnd != IntPtr.Zero)
             {
-                if (visible) ShowWindow(hWnd, 1); //1 = SW_SHOWNORMAL           
-                else ShowWindow(hWnd, 0); //0 = SW_HIDE               
+                if (visible)
+                {
+                    if (HideButton != null)
+                    {
+                        HideButton.Text = "Hide Console";
+                    }
+                    ShowWindow(hWnd, 1);
+                }
+                else
+                {
+                    if (HideButton != null)
+                    {
+                        HideButton.Text = "Show Console";
+                    }
+                    ShowWindow(hWnd, 0);
+                }
             }
         }
     }

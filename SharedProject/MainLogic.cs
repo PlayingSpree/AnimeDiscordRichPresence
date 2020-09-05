@@ -49,8 +49,22 @@ namespace AnimeDiscordRichPresence
                     }
                 }
                 lastAnime = anime;
-                DiscordActivity.Update();
-                Thread.Sleep(Config.program.ScanInterval);
+
+                int sleepTime = Config.program.ScanInterval;
+                do
+                {
+                    DiscordActivity.Update();
+                    if (sleepTime <= 0 || stop)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Thread.Sleep(Math.Min(200, sleepTime));
+                    }
+                    sleepTime -= 200;
+                }
+                while (sleepTime > 0);
             }
             DiscordActivity.Clear();
         }
