@@ -3,6 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon>12011220_1008817835815858_5428138400441508302_n_VjI_icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>

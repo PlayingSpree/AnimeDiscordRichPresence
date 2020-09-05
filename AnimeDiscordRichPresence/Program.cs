@@ -8,11 +8,12 @@ namespace AnimeDiscordRichPresence
     {
         static void Main(string[] args)
         {
-            Config.Load();
+            if (!Config.Load())
+                return;
 
             Console.WriteLine("Anime Discord Rich Presence by PlayingSpree.");
             Console.WriteLine("Edit config.json to add new website.");
-            Console.WriteLine("Scaning for anime every {0} miliseconds...", Config.program.scanInterval);
+            Console.WriteLine("Scaning for anime every {0} miliseconds...", Config.program.ScanInterval);
 
             AnimeName.Anime lastAnime = null;
 
@@ -47,7 +48,7 @@ namespace AnimeDiscordRichPresence
                 }
                 lastAnime = anime;
                 DiscordActivity.Update();
-                Thread.Sleep(Config.program.scanInterval);
+                Thread.Sleep(Config.program.ScanInterval);
             }
         }
         public static void Log(string text)

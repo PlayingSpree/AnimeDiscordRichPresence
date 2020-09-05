@@ -24,9 +24,6 @@ namespace AnimeDiscordRichPresence
             string stateString = string.IsNullOrEmpty(anime.episode) ? "" : string.Format("Episode {0} ", anime.episode);
             stateString += string.IsNullOrEmpty(anime.website) ? "" : string.Format("On {0}", anime.website);
 
-            Console.WriteLine(stateString);
-            Console.WriteLine(anime.name);
-
             // Hack from string to byte[128] to fix UTF-8 problem
             var activity = new Discord.Activity
             {

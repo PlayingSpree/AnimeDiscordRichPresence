@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -15,7 +14,7 @@ namespace AnimeDiscordRichPresence
 
             foreach (Process process in processlist)
             {
-                if (Config.animeMatch.processNames.Any(process.ProcessName.Contains))
+                if (Config.animeMatch.ProcessNames.Any(process.ProcessName.Contains))
                 {
                     if (!string.IsNullOrEmpty(process.MainWindowTitle))
                     {
@@ -30,14 +29,14 @@ namespace AnimeDiscordRichPresence
 
         static Anime processWindowTitle(string title)
         {
-            foreach (var animeWebsite in Config.animeMatch.animeWebsites)
+            foreach (var animeWebsite in Config.animeMatch.AnimeWebsites)
             {
-                if (animeWebsite.matchText.Any(title.Contains))
+                if (animeWebsite.MatchText.Any(title.Contains))
                 {
-                    string animeTitle = stringCutter(title, animeWebsite.matchAnimeNameStartText, animeWebsite.matchAnimeNameEndText);
-                    string animeEpisode = stringCutter(title, animeWebsite.matchEpisodeStartText, animeWebsite.matchEpisodeEndText);
+                    string animeTitle = stringCutter(title, animeWebsite.MatchAnimeNameStartText, animeWebsite.MatchAnimeNameEndText);
+                    string animeEpisode = stringCutter(title, animeWebsite.MatchEpisodeStartText, animeWebsite.MatchEpisodeEndText);
 
-                    return new Anime(animeTitle, animeWebsite.website, animeEpisode);
+                    return new Anime(animeTitle, animeWebsite.Website, animeEpisode);
                 }
             }
             return null;
