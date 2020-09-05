@@ -11,11 +11,12 @@ namespace AnimeDiscordRichPresence
         {
             if (discord == null)
             {
+                Program.Log("Try to connect to discord...");
                 discord = new Discord.Discord(751435145315221615, (UInt64)Discord.CreateFlags.Default);
                 activityManager = discord.GetActivityManager();
             }
         }
-        public static void Set(GetAnimeName.Anime anime)
+        public static void Set(AnimeName.Anime anime)
         {
             Init();
 
@@ -30,23 +31,23 @@ namespace AnimeDiscordRichPresence
                 Instance = true,
             };
 
-            Console.WriteLine("Try to set discord activity... (Name: {0})", anime.name);
-            activityManager.UpdateActivity(activity, statusCallback);
+            Program.Log("Try to set discord activity...");
+            activityManager.UpdateActivity(activity, StatusCallback);
         }
-        static void statusCallback(Discord.Result result)
+        static void StatusCallback(Discord.Result result)
         {
             if (result == Discord.Result.Ok)
             {
-                Console.WriteLine("Success!");
+                Program.Log("Success!");
             }
             else
             {
-                Console.WriteLine("Failed");
+                Program.Log("Failed");
             }
         }
         public static void Clear()
         {
-            Console.WriteLine("Try to clear discord activity...");
+            Program.Log("Try to disconnect discord...");
             discord.Dispose();
             discord = null;
         }
