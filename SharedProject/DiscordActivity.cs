@@ -12,7 +12,7 @@ namespace AnimeDiscordRichPresence
         {
             if (discord == null)
             {
-                Program.Log("Try to connect to discord...");
+                MainLogic.Log("Try to connect to discord...");
                 discord = new Discord.Discord(751435145315221615, (UInt64)Discord.CreateFlags.Default);
                 activityManager = discord.GetActivityManager();
             }
@@ -36,7 +36,7 @@ namespace AnimeDiscordRichPresence
                 Instance = true,
             };
 
-            Program.Log("Try to set discord activity...");
+            MainLogic.Log("Try to set discord activity...");
             activityManager.UpdateActivity(activity, StatusCallback);
         }
         static byte[] StringToByte(string text)
@@ -49,17 +49,20 @@ namespace AnimeDiscordRichPresence
         {
             if (result == Discord.Result.Ok)
             {
-                Program.Log("Set activity success!");
+                MainLogic.Log("Set activity success!");
             }
             else
             {
-                Program.Log(string.Format("Set activity failed. (Code {0}: {1})", (int)result, result));
+                MainLogic.Log(string.Format("Set activity failed. (Code {0}: {1})", (int)result, result));
             }
         }
         public static void Clear()
         {
-            Program.Log("Try to disconnect discord...");
-            discord.Dispose();
+            MainLogic.Log("Try to disconnect discord...");
+            if (discord != null)
+            {
+                discord.Dispose();
+            }
             discord = null;
         }
         public static void Update()

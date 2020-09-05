@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0efdc0ad-f350-4086-b8b3-2a206863bf0f</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>SharedProject</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AnimeName.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Config.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiscordActivity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiscordGameSDK\ActivityManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiscordGameSDK\Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiscordGameSDK\Core.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiscordGameSDK\ImageManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiscordGameSDK\LobbyManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiscordGameSDK\StorageManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiscordGameSDK\StoreManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MainLogic.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)12011220_1008817835815858_5428138400441508302_n_VjI_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>
