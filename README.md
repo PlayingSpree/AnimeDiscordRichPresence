@@ -12,7 +12,7 @@ https://github.com/PlayingSpree/AnimeDiscordRichPresence/releases
 
 ## How to use
 1. Extract .zip to any folder.
-1. Edit `config.json` to add website you want to show (See Adding your website)
+1. Edit `config.json` to add website you want to show ([See Adding your website](https://github.com/PlayingSpree/AnimeDiscordRichPresence#adding-your-website))
 1. Run AnimeDiscordRichPresence.exe
 
 A console window will pop up and then auto hide in system tray. You can exit the program there.
