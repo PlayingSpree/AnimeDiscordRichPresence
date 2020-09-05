@@ -48,11 +48,11 @@ Discord activity accept max 128 character.
 
 You want to add this 2 website...
 
-Example website 1: Website that website title start with anime title and multiple episode ending pattern
+**Example website 1**: Website that website title start with anime title and multiple episode ending pattern
 
 Website 1 example title: `Boku no Pico Ep.1 Sub ExampleAnime` and `Yosuga no Sora Ep.1 Dub ExampleAnime`
 
-Example website 2: Website that website title end with anime title and no episode info
+**Example website 2**: Website that website title end with anime title and no episode info
 
 Website 2 example title: `ExampleAnime2 Steins;Gate`
 
