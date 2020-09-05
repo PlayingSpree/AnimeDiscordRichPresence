@@ -17,6 +17,8 @@ https://github.com/PlayingSpree/AnimeDiscordRichPresence/releases
 
 A console window will pop up and then auto hide in system tray. You can exit the program there.
 
+Want to run at start up? [Guide for windows 10](https://support.microsoft.com/en-us/help/4558286/windows-10-add-an-app-to-run-automatically-at-startup)
+
 ## Adding your website
 Find pattern from your anime website title
 
