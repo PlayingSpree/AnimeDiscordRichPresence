@@ -22,11 +22,11 @@ namespace AnimeDiscordRichPresence
                 public class AnimeWebsite
                 {
                     public string website = "Anime Sugoi";
-                    public string matchText = "Anime-Sugoi";
-                    public string matchAnimeNameStartText = null;
-                    public string matchAnimeNameEndText = "ตอนที่";
-                    public string matchEpisodeStartText = "ตอนที่";
-                    public string matchEpisodeEndText = "ซับ";
+                    public List<string> matchText = new List<string>() { "Anime-Sugoi" };
+                    public List<string> matchAnimeNameStartText = new List<string>() { };
+                    public List<string> matchAnimeNameEndText = new List<string>() { "ตอนที่" };
+                    public List<string> matchEpisodeStartText = new List<string>() { "ตอนที่" };
+                    public List<string> matchEpisodeEndText = new List<string>() { "ซับ", "แปล" };
                 }
                 public List<string> processNames = new List<string>() { "chrome", "msedge" };
                 public List<AnimeWebsite> animeWebsites = new List<AnimeWebsite>() { new AnimeWebsite() };

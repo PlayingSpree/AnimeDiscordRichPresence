@@ -32,7 +32,7 @@ namespace AnimeDiscordRichPresence
         {
             foreach (var animeWebsite in Config.animeMatch.animeWebsites)
             {
-                if (title.Contains(animeWebsite.matchText))
+                if (animeWebsite.matchText.Any(title.Contains))
                 {
                     string animeTitle = stringCutter(title, animeWebsite.matchAnimeNameStartText, animeWebsite.matchAnimeNameEndText);
                     string animeEpisode = stringCutter(title, animeWebsite.matchEpisodeStartText, animeWebsite.matchEpisodeEndText);
@@ -43,20 +43,43 @@ namespace AnimeDiscordRichPresence
             return null;
         }
 
-        static string stringCutter(string text, string start, string end)
+        static string stringCutter(string text, List<string> start, List<string> end)
         {
             int startIndex = 0, endIndex = text.Length;
-            if (string.IsNullOrEmpty(start) && string.IsNullOrEmpty(end))
+            if (!start.Any() && !end.Any())
             {
-                return null;
+                return "";
             }
-            if (!string.IsNullOrEmpty(start))
+            if (start.Any())
             {
-                startIndex = text.IndexOf(start) + start.Length;
+                foreach (var match in start)
+                {
+                    startIndex = text.IndexOf(match);
+                    if (startIndex == -1)
+                    {
+                        startIndex = 0;
+                    }
+                    else
+                    {
+                        startIndex += match.Length;
+                        break;
+                    }
+                }
             }
-            if (!string.IsNullOrEmpty(end))
+            if (end.Any())
             {
-                endIndex = text.LastIndexOf(end);
+                foreach (var match in end)
+                {
+                    endIndex = text.IndexOf(match);
+                    if (endIndex == -1)
+                    {
+                        endIndex = text.Length;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
             }
             return text[startIndex..endIndex].Trim();
         }

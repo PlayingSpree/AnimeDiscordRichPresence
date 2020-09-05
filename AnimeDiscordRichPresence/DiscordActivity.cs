@@ -30,7 +30,7 @@ namespace AnimeDiscordRichPresence
             // Hack from string to byte[128] to fix UTF-8 problem
             var activity = new Discord.Activity
             {
-                State = StringToByte(stateString + "เทสๆๆあ"),
+                State = StringToByte(stateString),
                 Details = StringToByte(anime.name),
                 Timestamps =
                     {
