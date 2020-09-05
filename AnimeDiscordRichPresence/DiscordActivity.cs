@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace AnimeDiscordRichPresence
 {
@@ -20,10 +21,17 @@ namespace AnimeDiscordRichPresence
         {
             Init();
 
+            string stateString = string.IsNullOrEmpty(anime.episode) ? "" : string.Format("Episode {0} ", anime.episode);
+            stateString += string.IsNullOrEmpty(anime.website) ? "" : string.Format("On {0}", anime.website);
+
+            Console.WriteLine(stateString);
+            Console.WriteLine(anime.name);
+
+            // Hack from string to byte[128] to fix UTF-8 problem
             var activity = new Discord.Activity
             {
-                State = anime.website,
-                Details = anime.name,
+                State = StringToByte(stateString + "เทสๆๆあ"),
+                Details = StringToByte(anime.name),
                 Timestamps =
                     {
                         Start = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
@@ -34,15 +42,21 @@ namespace AnimeDiscordRichPresence
             Program.Log("Try to set discord activity...");
             activityManager.UpdateActivity(activity, StatusCallback);
         }
+        static byte[] StringToByte(string text)
+        {
+            byte[] array = Encoding.UTF8.GetBytes(text);
+            Array.Resize(ref array, 128);
+            return array;
+        }
         static void StatusCallback(Discord.Result result)
         {
             if (result == Discord.Result.Ok)
             {
-                Program.Log("Success!");
+                Program.Log("Set activity success!");
             }
             else
             {
-                Program.Log("Failed");
+                Program.Log(string.Format("Set activity failed. (Code {0}: {1})", (int)result, result));
             }
         }
         public static void Clear()

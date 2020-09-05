@@ -39,6 +39,11 @@ namespace AnimeDiscordRichPresence
                         Log("New anime detected.");
                         DiscordActivity.Set(anime);
                     }
+                    else if (lastAnime.episode != anime.episode)
+                    {
+                        Log("New episode detected.");
+                        DiscordActivity.Set(anime);
+                    }
                 }
                 lastAnime = anime;
                 DiscordActivity.Update();
@@ -47,7 +52,7 @@ namespace AnimeDiscordRichPresence
         }
         public static void Log(string text)
         {
-            Console.WriteLine(string.Format("[{0}] {1}",DateTime.Now.ToString("HH:mm:ss"), text));
+            Console.WriteLine(string.Format("[{0}] {1}", DateTime.Now.ToString("HH:mm:ss"), text));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -33,14 +34,31 @@ namespace AnimeDiscordRichPresence
             {
                 if (title.Contains(animeWebsite.matchText))
                 {
-                    return new Anime("Anime Name", animeWebsite.website, "1");
-                    //int pFrom = St.IndexOf("key : ") + "key : ".Length;
-                    //int pTo = St.LastIndexOf(" - ");
+                    string animeTitle = stringCutter(title, animeWebsite.matchAnimeNameStartText, animeWebsite.matchAnimeNameEndText);
+                    string animeEpisode = stringCutter(title, animeWebsite.matchEpisodeStartText, animeWebsite.matchEpisodeEndText);
 
-                    //String result = St.Substring(pFrom, pTo - pFrom);
+                    return new Anime(animeTitle, animeWebsite.website, animeEpisode);
                 }
             }
             return null;
+        }
+
+        static string stringCutter(string text, string start, string end)
+        {
+            int startIndex = 0, endIndex = text.Length;
+            if (string.IsNullOrEmpty(start) && string.IsNullOrEmpty(end))
+            {
+                return null;
+            }
+            if (!string.IsNullOrEmpty(start))
+            {
+                startIndex = text.IndexOf(start) + start.Length;
+            }
+            if (!string.IsNullOrEmpty(end))
+            {
+                endIndex = text.LastIndexOf(end);
+            }
+            return text[startIndex..endIndex].Trim();
         }
 
         public class Anime

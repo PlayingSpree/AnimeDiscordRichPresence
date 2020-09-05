@@ -292,11 +292,15 @@ namespace Discord
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
         public string Name;
 
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
-        public string State;
+        //[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+        //public string State;
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.LPStr, SizeConst = 128)]
+        public byte[] State;
 
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
-        public string Details;
+        //[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+        //public string Details;
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.LPStr, SizeConst = 128)]
+        public byte[] Details;
 
         public ActivityTimestamps Timestamps;
 
