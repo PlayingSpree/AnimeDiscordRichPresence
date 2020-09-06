@@ -23,8 +23,14 @@ namespace AnimeDiscordRichPresence
                     }
                 }
             }
-
-            return processWindowTitle(title);
+            if (title == null)
+            {
+                return null;
+            }
+            else
+            {
+                return processWindowTitle(title);
+            }
         }
 
         static Anime processWindowTitle(string title)
@@ -78,6 +84,13 @@ namespace AnimeDiscordRichPresence
                     {
                         break;
                     }
+                }
+            }
+            if (start.Any() && end.Any())
+            {
+                if (startIndex == 0 || endIndex == text.Length)
+                {
+                    return "";
                 }
             }
             return text[startIndex..endIndex].Trim();

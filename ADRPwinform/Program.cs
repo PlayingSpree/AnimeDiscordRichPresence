@@ -1,6 +1,7 @@
 using AnimeDiscordRichPresence;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -52,7 +53,16 @@ namespace ADRPwinform
             Visible = false;
             SetConsoleWindowVisibility(Visible);
 
-            MainLogic.Run(ref stop);
+            try
+            {
+                MainLogic.Run(ref stop);
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("Error.txt", ex.ToString());
+                notifyIcon.Dispose();
+                Application.Exit();
+            }
         }
 
         [DllImport("user32.dll")]

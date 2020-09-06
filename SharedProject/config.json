@@ -1,47 +1,21 @@
 ﻿{
-  "AnimeMatch": {
-    "ProcessNames": [
-      "chrome",
-      "msedge"
-    ],
-    "AnimeWebsites": [
-      {
-        "Website": "Anime Sugoi",
-        "MatchText": [
-          "Anime-Sugoi"
+    "AnimeMatch": {
+        "ProcessNames": [
+            "chrome",
+            "msedge"
         ],
-        "MatchAnimeNameStartText": [],
-        "MatchAnimeNameEndText": [
-          "ตอนที่"
-        ],
-        "MatchEpisodeStartText": [
-          "ตอนที่"
-        ],
-        "MatchEpisodeEndText": [
-          "ซับ",
-          "พากย์"
+        "AnimeWebsites": [
+            {
+                "Website": "anime",
+                "MatchText": [ "anime" ],
+                "MatchAnimeNameStartText": [ "Watch" ],
+                "MatchAnimeNameEndText": [ "Episode" ],
+                "MatchEpisodeStartText": [ "Episode" ],
+                "MatchEpisodeEndText": [ "English" ]
+            }
         ]
-      },
-      {
-        "Website": "Anime Lolo",
-        "MatchText": [
-          "AnimeLoLo"
-        ],
-        "MatchAnimeNameStartText": [],
-        "MatchAnimeNameEndText": [
-          "ตอนที่"
-        ],
-        "MatchEpisodeStartText": [
-          "ตอนที่"
-        ],
-        "MatchEpisodeEndText": [
-          "ซับ",
-          "พากย์"
-        ]
-      }
-    ]
-  },
-  "Program": {
-    "ScanInterval": 3000
-  }
+    },
+    "Program": {
+        "ScanInterval": 3000
+    }
 }
