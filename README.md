@@ -1,6 +1,8 @@
 # AnimeDiscordRichPresence
 Anime websites don't have discord rich presence... so I created one.
 
+![Showcase Image](https://raw.githubusercontent.com/PlayingSpree/AnimeDiscordRichPresence/master/Doc/DiscordActivity.png)
+
 ## Feature
 
 * Automatically scan window title on specific process for keyword that identify website name then use it to set discord activity (Rich presence).
@@ -16,6 +18,8 @@ https://github.com/PlayingSpree/AnimeDiscordRichPresence/releases
 1. Run AnimeDiscordRichPresence.exe
 
 A console window will pop up and then auto hide in system tray. You can exit the program there.
+
+![System Tray Image](https://raw.githubusercontent.com/PlayingSpree/AnimeDiscordRichPresence/master/Doc/System%20Tray.png)
 
 Want to run at start up? [Guide for windows 10](https://support.microsoft.com/en-us/help/4558286/windows-10-add-an-app-to-run-automatically-at-startup)
 
