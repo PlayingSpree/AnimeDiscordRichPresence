@@ -1,0 +1,3 @@
++ Check if the app is already opened. Nortify then close the app.
++ Improve way to add new website... May be json generator web app?
+- Just kidding why do I need to inprove the app... Just watch more anime or play more game lul
