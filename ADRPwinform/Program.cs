@@ -14,6 +14,7 @@ namespace ADRPwinform
         static NotifyIcon notifyIcon = new NotifyIcon();
         static bool Visible = true;
         static ToolStripItem HideButton;
+        static ToolStripItem AboutToolStrip;
         static void Main(string[] args)
         {
             if (System.Diagnostics.Process.GetProcessesByName(Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1) return;
@@ -37,6 +38,25 @@ namespace ADRPwinform
                 notifyIcon.Text = "AnimeDiscordRichPresence";
 
                 var contextMenu = new ContextMenuStrip();
+                contextMenu.Opening += new System.ComponentModel.CancelEventHandler((object sender, System.ComponentModel.CancelEventArgs e) =>
+                {
+                    if (MainLogic.lastAnime == null)
+                    {
+                        AboutToolStrip.Text = "No Anime Detected.";
+                    }
+                    else
+                    {
+                        AboutToolStrip.Text = MainLogic.lastAnime.name;
+                        AboutToolStrip.Text += string.IsNullOrEmpty(MainLogic.lastAnime.episode) ? "" : $" Episode {MainLogic.lastAnime.episode}";
+                        AboutToolStrip.Text += string.IsNullOrEmpty(MainLogic.lastAnime.website) ? "" : $" On {MainLogic.lastAnime.website}";
+                    }
+                });
+
+                contextMenu.Items.Add($"AnimeDiscordRichPresence {UpdateChecker.currentVersion}").Enabled = false;
+
+                AboutToolStrip = contextMenu.Items.Add("No Anime Detected.");
+                AboutToolStrip.Enabled = false;
+
                 HideButton = contextMenu.Items.Add("Show Console", null, (s, e) =>
                 {
                     Visible = !Visible;
