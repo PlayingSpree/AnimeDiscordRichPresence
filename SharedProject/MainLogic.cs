@@ -5,6 +5,10 @@ namespace AnimeDiscordRichPresence
 {
     static class MainLogic
     {
+        public static AnimeName.Anime lastAnime = null;
+        static bool stop = false;
+        public static void Stop() => stop = true;
+
         public static bool Init()
         {
             if (!Config.Load())
@@ -12,13 +16,14 @@ namespace AnimeDiscordRichPresence
 
             Console.WriteLine("Anime Discord Rich Presence by PlayingSpree.");
             Console.WriteLine("Edit config.json to add new website.");
-            Console.WriteLine("Scaning for anime every {0} miliseconds...", Config.program.ScanInterval);
             return true;
         }
-        public static void Run(ref bool stop)
+        public static void Run()
         {
-            AnimeName.Anime lastAnime = null;
+            stop = false;
+            
 
+            Console.WriteLine("Scaning for anime every {0} miliseconds...", Config.program.ScanInterval);
             while (!stop)
             {
                 AnimeName.Anime anime = AnimeName.GetAnime();
@@ -68,6 +73,7 @@ namespace AnimeDiscordRichPresence
             }
             DiscordActivity.Clear();
         }
+
         public static void Log(string text)
         {
             Console.WriteLine(string.Format("[{0}] {1}", DateTime.Now.ToString("HH:mm:ss"), text));

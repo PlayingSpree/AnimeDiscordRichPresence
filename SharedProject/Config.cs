@@ -25,30 +25,64 @@ namespace AnimeDiscordRichPresence
             {
                 Console.WriteLine("config.json file not found.");
 
-                var options = new JsonSerializerOptions
+                try
                 {
-                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
-                    WriteIndented = true,
-                };
-                File.WriteAllText("config.json", JsonSerializer.Serialize(new ConfigFile(), options), Encoding.UTF8);
-                Console.WriteLine("Default config.json created.");
+                    var options = new JsonSerializerOptions
+                    {
+                        Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                        WriteIndented = true,
+                    };
+                    File.WriteAllText("config.json", JsonSerializer.Serialize(new ConfigFile(), options), Encoding.UTF8);
+                    Console.WriteLine("Default config.json created.");
 
-                animeMatch = new ConfigFile.AnimeMatchConfig();
-                program = new ConfigFile.ProgramConfig();
+                    animeMatch = new ConfigFile.AnimeMatchConfig();
+                    program = new ConfigFile.ProgramConfig();
 
-                Console.WriteLine("Press enter to continue with default config or other key to exit program...");
+                    Console.WriteLine("Press enter to continue with default config or other key to exit program...");
 
-                return Console.ReadKey().Key == ConsoleKey.Enter ? true : false;
+                    return Console.ReadKey().Key == ConsoleKey.Enter;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Error while creating config.json.");
+                    return false;
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Error while reading config.json.");
+                Console.WriteLine();
+                Console.WriteLine(ex);
                 Console.WriteLine();
 
                 return false;
             }
             animeMatch = file.AnimeMatch;
             program = file.Program;
+            return true;
+        }
+
+        public static bool Save()
+        {
+            try
+            {
+                ConfigFile file = new ConfigFile()
+                {
+                    AnimeMatch = animeMatch,
+                    Program = program
+                };
+                var options = new JsonSerializerOptions
+                {
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                    WriteIndented = true,
+                };
+                File.WriteAllText("config.json", JsonSerializer.Serialize(file, options), Encoding.UTF8);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error while writing config.json.");
+                return false;
+            }
             return true;
         }
 
@@ -60,12 +94,12 @@ namespace AnimeDiscordRichPresence
             {
                 public class AnimeWebsite
                 {
-                    public string Website { get; set; } = "Anime Sugoi";
-                    public List<string> MatchText { get; set; } = new List<string>() { "Anime-Sugoi" };
-                    public List<string> MatchAnimeNameStartText { get; set; } = new List<string>() { };
-                    public List<string> MatchAnimeNameEndText { get; set; } = new List<string>() { "ตอนที่" };
-                    public List<string> MatchEpisodeStartText { get; set; } = new List<string>() { "ตอนที่" };
-                    public List<string> MatchEpisodeEndText { get; set; } = new List<string>() { "ซับ", "แปล" };
+                    public string Website { get; set; } = "anime";
+                    public List<string> MatchText { get; set; } = new List<string>() { "anime" };
+                    public List<string> MatchAnimeNameStartText { get; set; } = new List<string>() { "Watch" };
+                    public List<string> MatchAnimeNameEndText { get; set; } = new List<string>() { "Episode" };
+                    public List<string> MatchEpisodeStartText { get; set; } = new List<string>() { "Episode" };
+                    public List<string> MatchEpisodeEndText { get; set; } = new List<string>() { "English" };
                 }
                 public List<string> ProcessNames { get; set; } = new List<string>() { "chrome", "msedge" };
                 public List<AnimeWebsite> AnimeWebsites { get; set; } = new List<AnimeWebsite>() { new AnimeWebsite() };
@@ -73,6 +107,8 @@ namespace AnimeDiscordRichPresence
             public class ProgramConfig
             {
                 public int ScanInterval { get; set; } = 3000;
+                public bool UpdateIgnoreAll { get; set; } = false;
+                public string UpdateIgnoreVersion { get; set; } = "v0.0.0";
             }
         }
     }

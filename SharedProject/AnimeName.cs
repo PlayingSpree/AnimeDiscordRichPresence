@@ -50,11 +50,11 @@ namespace AnimeDiscordRichPresence
 
         static string stringCutter(string text, List<string> start, List<string> end)
         {
-            int startIndex = 0, endIndex = text.Length;
             if (!start.Any() && !end.Any())
             {
                 return "";
             }
+            int startIndex = 0, endIndex = text.Length;
             if (start.Any())
             {
                 foreach (var match in start)
@@ -75,14 +75,24 @@ namespace AnimeDiscordRichPresence
             {
                 foreach (var match in end)
                 {
-                    endIndex = text.IndexOf(match);
-                    if (endIndex == -1)
+                    int currentEndIndex = text.IndexOf(match);
+                    if (currentEndIndex == -1)
                     {
-                        endIndex = text.Length;
+                        currentEndIndex = text.Length;
                     }
                     else
                     {
-                        break;
+                        if (endIndex != text.Length && currentEndIndex > startIndex)
+                        {
+                            if (currentEndIndex < endIndex)
+                            {
+                                endIndex = currentEndIndex;
+                            }
+                        }
+                        else
+                        {
+                            endIndex = currentEndIndex;
+                        }
                     }
                 }
             }

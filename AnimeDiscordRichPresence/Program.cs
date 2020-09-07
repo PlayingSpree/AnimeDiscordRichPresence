@@ -4,9 +4,12 @@
     {
         static void Main(string[] args)
         {
-            MainLogic.Init();
-            bool stop = false;
-            MainLogic.Run(ref stop);
+            if (!MainLogic.Init())
+            {
+                return;
+            }
+            UpdateChecker.Check();
+            MainLogic.Run();
         }
     }
 }
