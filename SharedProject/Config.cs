@@ -42,7 +42,9 @@ namespace AnimeDiscordRichPresence
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Error while reading config.json.");
+                Console.WriteLine();
+                Console.WriteLine(ex);
                 Console.WriteLine();
 
                 return false;
@@ -60,12 +62,12 @@ namespace AnimeDiscordRichPresence
             {
                 public class AnimeWebsite
                 {
-                    public string Website { get; set; } = "Anime Sugoi";
-                    public List<string> MatchText { get; set; } = new List<string>() { "Anime-Sugoi" };
-                    public List<string> MatchAnimeNameStartText { get; set; } = new List<string>() { };
-                    public List<string> MatchAnimeNameEndText { get; set; } = new List<string>() { "ตอนที่" };
-                    public List<string> MatchEpisodeStartText { get; set; } = new List<string>() { "ตอนที่" };
-                    public List<string> MatchEpisodeEndText { get; set; } = new List<string>() { "ซับ", "แปล" };
+                    public string Website { get; set; } = "anime";
+                    public List<string> MatchText { get; set; } = new List<string>() { "anime" };
+                    public List<string> MatchAnimeNameStartText { get; set; } = new List<string>() { "Watch" };
+                    public List<string> MatchAnimeNameEndText { get; set; } = new List<string>() { "Episode" };
+                    public List<string> MatchEpisodeStartText { get; set; } = new List<string>() { "Episode" };
+                    public List<string> MatchEpisodeEndText { get; set; } = new List<string>() { "English" };
                 }
                 public List<string> ProcessNames { get; set; } = new List<string>() { "chrome", "msedge" };
                 public List<AnimeWebsite> AnimeWebsites { get; set; } = new List<AnimeWebsite>() { new AnimeWebsite() };
