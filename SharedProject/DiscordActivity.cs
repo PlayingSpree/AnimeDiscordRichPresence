@@ -12,7 +12,6 @@ namespace AnimeDiscordRichPresence
         {
             if (discord == null)
             {
-                MainLogic.Log("Try to connect to discord...");
                 discord = new Discord.Discord(751435145315221615, (UInt64)Discord.CreateFlags.Default);
                 activityManager = discord.GetActivityManager();
             }
@@ -20,6 +19,7 @@ namespace AnimeDiscordRichPresence
         public static void Set(AnimeName.Anime anime)
         {
             Init();
+            Update();
 
             string stateString = string.IsNullOrEmpty(anime.episode) ? "" : string.Format("Episode {0} ", anime.episode);
             stateString += string.IsNullOrEmpty(anime.website) ? "" : string.Format("On {0}", anime.website);
@@ -37,7 +37,14 @@ namespace AnimeDiscordRichPresence
             };
 
             MainLogic.Log("Try to set discord activity...");
-            activityManager.UpdateActivity(activity, StatusCallback);
+            try
+            {
+                activityManager.UpdateActivity(activity, StatusCallback);
+            }
+            catch
+            {
+                MainLogic.Log("Could not set activity. Discord error. (Maybe try opening discord...)");
+            }
         }
         static byte[] StringToByte(string text)
         {
@@ -58,10 +65,17 @@ namespace AnimeDiscordRichPresence
         }
         public static void Clear()
         {
-            MainLogic.Log("Try to disconnect discord...");
+            MainLogic.Log("Disconnecting from discord...");
             if (discord != null)
             {
-                discord.Dispose();
+                try
+                {
+                    discord.Dispose();
+                }
+                catch
+                {
+
+                }
             }
             discord = null;
         }
@@ -69,7 +83,15 @@ namespace AnimeDiscordRichPresence
         {
             if (discord != null)
             {
-                discord.RunCallbacks();
+                try
+                {
+                    discord.RunCallbacks();
+                }
+                catch
+                {
+                    MainLogic.Log("Discord update error. (Maybe try opening discord...)");
+                    Clear();
+                }
             }
         }
     }

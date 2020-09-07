@@ -6,8 +6,8 @@
         ],
         "AnimeWebsites": [
             {
-                "Website": "anime",
-                "MatchText": [ "anime" ],
+                "Website": "Anime",
+                "MatchText": [ "Anime" ],
                 "MatchAnimeNameStartText": [ "Watch" ],
                 "MatchAnimeNameEndText": [ "Episode" ],
                 "MatchEpisodeStartText": [ "Episode" ],

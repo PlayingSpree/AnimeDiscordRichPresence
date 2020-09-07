@@ -28,7 +28,7 @@ namespace ADRPwinform
             Thread notifyThread = new Thread(
             delegate ()
             {
-                notifyIcon.DoubleClick += (s, e) =>
+                notifyIcon.Click += (s, e) =>
                 {
                     Visible = !Visible;
                     SetConsoleWindowVisibility(Visible);
@@ -86,7 +86,12 @@ namespace ADRPwinform
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Uncaught Error Detected.");
+                Console.WriteLine(ex);
+                SetConsoleWindowVisibility(true);
                 File.WriteAllText("Error.txt", ex.ToString());
+                
+                Console.ReadKey();
                 notifyIcon.Dispose();
                 Application.Exit();
             }
