@@ -2,6 +2,7 @@ using AnimeDiscordRichPresence;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -16,6 +17,8 @@ namespace ADRPwinform
         static ToolStripItem HideButton;
         static void Main(string[] args)
         {
+            if (System.Diagnostics.Process.GetProcessesByName(Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1) return;
+
             Thread notifyThread = new Thread(
             delegate ()
             {
