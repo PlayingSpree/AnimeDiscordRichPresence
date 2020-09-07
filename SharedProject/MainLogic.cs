@@ -15,7 +15,6 @@ namespace AnimeDiscordRichPresence
 
             Console.WriteLine("Anime Discord Rich Presence by PlayingSpree.");
             Console.WriteLine("Edit config.json to add new website.");
-            Console.WriteLine("Scaning for anime every {0} miliseconds...", Config.program.ScanInterval);
             return true;
         }
         public static void Run()
@@ -23,6 +22,7 @@ namespace AnimeDiscordRichPresence
             stop = false;
             AnimeName.Anime lastAnime = null;
 
+            Console.WriteLine("Scaning for anime every {0} miliseconds...", Config.program.ScanInterval);
             while (!stop)
             {
                 AnimeName.Anime anime = AnimeName.GetAnime();

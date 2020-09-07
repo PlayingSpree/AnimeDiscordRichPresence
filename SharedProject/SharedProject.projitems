@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DiscordGameSDK\StorageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DiscordGameSDK\StoreManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainLogic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UpdateChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)12011220_1008817835815858_5428138400441508302_n_VjI_icon.ico" />

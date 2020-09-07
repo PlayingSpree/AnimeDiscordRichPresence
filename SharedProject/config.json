@@ -16,6 +16,7 @@
         ]
     },
     "Program": {
-        "ScanInterval": 3000
+        "ScanInterval": 3000,
+        "UpdateIgnoreAll": false
     }
 }

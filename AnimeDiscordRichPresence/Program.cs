@@ -4,7 +4,11 @@
     {
         static void Main(string[] args)
         {
-            MainLogic.Init();
+            if (!MainLogic.Init())
+            {
+                return;
+            }
+            UpdateChecker.Check();
             MainLogic.Run();
         }
     }

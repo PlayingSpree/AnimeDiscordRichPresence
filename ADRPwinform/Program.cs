@@ -18,6 +18,12 @@ namespace ADRPwinform
         {
             if (System.Diagnostics.Process.GetProcessesByName(Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1) return;
 
+            if (!MainLogic.Init())
+            {
+                return;
+            }
+            UpdateChecker.Check();
+
             Thread notifyThread = new Thread(
             delegate ()
             {
@@ -48,7 +54,6 @@ namespace ADRPwinform
 
                 Application.Run();
             });
-            MainLogic.Init();
 
             notifyThread.Start();
 
