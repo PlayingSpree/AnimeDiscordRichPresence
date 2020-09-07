@@ -5,6 +5,9 @@ namespace AnimeDiscordRichPresence
 {
     static class MainLogic
     {
+        static bool stop = false;
+        public static void Stop() => stop = true;
+
         public static bool Init()
         {
             if (!Config.Load())
@@ -15,8 +18,9 @@ namespace AnimeDiscordRichPresence
             Console.WriteLine("Scaning for anime every {0} miliseconds...", Config.program.ScanInterval);
             return true;
         }
-        public static void Run(ref bool stop)
+        public static void Run()
         {
+            stop = false;
             AnimeName.Anime lastAnime = null;
 
             while (!stop)
@@ -68,6 +72,7 @@ namespace AnimeDiscordRichPresence
             }
             DiscordActivity.Clear();
         }
+
         public static void Log(string text)
         {
             Console.WriteLine(string.Format("[{0}] {1}", DateTime.Now.ToString("HH:mm:ss"), text));

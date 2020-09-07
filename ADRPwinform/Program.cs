@@ -13,7 +13,6 @@ namespace ADRPwinform
     {
         static NotifyIcon notifyIcon = new NotifyIcon();
         static bool Visible = true;
-        static bool stop = false;
         static ToolStripItem HideButton;
         static void Main(string[] args)
         {
@@ -40,7 +39,7 @@ namespace ADRPwinform
 
                 contextMenu.Items.Add("Exit", null, (s, e) =>
                 {
-                    stop = true;
+                    MainLogic.Stop();
                     notifyIcon.Dispose();
                     Application.Exit();
                 });
@@ -58,7 +57,7 @@ namespace ADRPwinform
 
             try
             {
-                MainLogic.Run(ref stop);
+                MainLogic.Run();
             }
             catch (Exception ex)
             {
