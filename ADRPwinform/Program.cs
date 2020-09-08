@@ -28,7 +28,7 @@ namespace ADRPwinform
             Thread notifyThread = new Thread(
             delegate ()
             {
-                notifyIcon.Click += (s, e) =>
+                notifyIcon.DoubleClick += (s, e) =>
                 {
                     Visible = !Visible;
                     SetConsoleWindowVisibility(Visible);
