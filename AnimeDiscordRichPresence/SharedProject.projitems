@@ -6,7 +6,7 @@
     <SharedGUID>0efdc0ad-f350-4086-b8b3-2a206863bf0f</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>SharedProject</Import_RootNamespace>
+    <Import_RootNamespace>AnimeDiscordRichPresence</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AnimeName.cs" />

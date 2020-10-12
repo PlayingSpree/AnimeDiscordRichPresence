@@ -3,31 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDiscordRichPresence", "AnimeDiscordRichPresence\AnimeDiscordRichPresence.csproj", "{CCB839D1-0295-45F8-980F-D5515801C254}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADRPwinform", "ADRPwinform\ADRPwinform.csproj", "{6D6BA416-62A6-4B97-9E32-1BDCBB2AF61C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADRPwinform", "ADRPwinform\ADRPwinform.csproj", "{6D6BA416-62A6-4B97-9E32-1BDCBB2AF61C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADRPconsole", "ADRPconsole\ADRPconsole.csproj", "{93378A73-A9F2-4EE1-87D4-93508D01C187}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedProject", "SharedProject\SharedProject.shproj", "{0EFDC0AD-F350-4086-B8B3-2A206863BF0F}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AnimeDiscordRichPresence", "AnimeDiscordRichPresence\AnimeDiscordRichPresence.shproj", "{0EFDC0AD-F350-4086-B8B3-2A206863BF0F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		SharedProject\SharedProject.projitems*{0efdc0ad-f350-4086-b8b3-2a206863bf0f}*SharedItemsImports = 13
-		SharedProject\SharedProject.projitems*{6d6ba416-62a6-4b97-9e32-1bdcbb2af61c}*SharedItemsImports = 5
-		SharedProject\SharedProject.projitems*{ccb839d1-0295-45f8-980f-d5515801c254}*SharedItemsImports = 5
+		AnimeDiscordRichPresence\SharedProject.projitems*{0efdc0ad-f350-4086-b8b3-2a206863bf0f}*SharedItemsImports = 13
+		AnimeDiscordRichPresence\SharedProject.projitems*{6d6ba416-62a6-4b97-9e32-1bdcbb2af61c}*SharedItemsImports = 5
+		AnimeDiscordRichPresence\SharedProject.projitems*{93378a73-a9f2-4ee1-87d4-93508d01c187}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CCB839D1-0295-45F8-980F-D5515801C254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCB839D1-0295-45F8-980F-D5515801C254}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCB839D1-0295-45F8-980F-D5515801C254}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCB839D1-0295-45F8-980F-D5515801C254}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6D6BA416-62A6-4B97-9E32-1BDCBB2AF61C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6D6BA416-62A6-4B97-9E32-1BDCBB2AF61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D6BA416-62A6-4B97-9E32-1BDCBB2AF61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D6BA416-62A6-4B97-9E32-1BDCBB2AF61C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93378A73-A9F2-4EE1-87D4-93508D01C187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93378A73-A9F2-4EE1-87D4-93508D01C187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93378A73-A9F2-4EE1-87D4-93508D01C187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93378A73-A9F2-4EE1-87D4-93508D01C187}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

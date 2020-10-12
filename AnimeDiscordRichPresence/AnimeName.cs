@@ -75,7 +75,7 @@ namespace AnimeDiscordRichPresence
             {
                 foreach (var match in end)
                 {
-                    int currentEndIndex = text.IndexOf(match);
+                    int currentEndIndex = text.IndexOf(match, startIndex);
                     if (currentEndIndex == -1)
                     {
                         currentEndIndex = text.Length;
