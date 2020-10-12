@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -14,7 +15,8 @@ namespace ADRPwinform
         static NotifyIcon notifyIcon = new NotifyIcon();
         static bool Visible = true;
         static ToolStripItem HideButton;
-        static ToolStripItem AboutToolStrip;
+        static ToolStripItem AboutItem;
+        static ToolStripItem PauseButton;
         static void Main(string[] args)
         {
             if (System.Diagnostics.Process.GetProcessesByName(Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1) return;
@@ -40,22 +42,55 @@ namespace ADRPwinform
                 var contextMenu = new ContextMenuStrip();
                 contextMenu.Opening += new System.ComponentModel.CancelEventHandler((object sender, System.ComponentModel.CancelEventArgs e) =>
                 {
-                    if (MainLogic.lastAnime == null)
+                    if (MainLogic.IsPause)
                     {
-                        AboutToolStrip.Text = "No Anime Detected.";
+                        AboutItem.Text = "Anime Detection Paused.";
+                    }
+                    else if (MainLogic.lastAnime == null)
+                    {
+                        AboutItem.Text = "No Anime Detected.";
                     }
                     else
                     {
-                        AboutToolStrip.Text = MainLogic.lastAnime.name;
-                        AboutToolStrip.Text += string.IsNullOrEmpty(MainLogic.lastAnime.episode) ? "" : $" Episode {MainLogic.lastAnime.episode}";
-                        AboutToolStrip.Text += string.IsNullOrEmpty(MainLogic.lastAnime.website) ? "" : $" On {MainLogic.lastAnime.website}";
+                        AboutItem.Text = MainLogic.lastAnime.name;
+                        AboutItem.Text += string.IsNullOrEmpty(MainLogic.lastAnime.episode) ? "" : $" Episode {MainLogic.lastAnime.episode}";
+                        AboutItem.Text += string.IsNullOrEmpty(MainLogic.lastAnime.website) ? "" : $" On {MainLogic.lastAnime.website}";
                     }
                 });
 
                 contextMenu.Items.Add($"AnimeDiscordRichPresence {UpdateChecker.currentVersion}").Enabled = false;
 
-                AboutToolStrip = contextMenu.Items.Add("No Anime Detected.");
-                AboutToolStrip.Enabled = false;
+                AboutItem = contextMenu.Items.Add("No Anime Detected.");
+                AboutItem.Enabled = false;
+
+                contextMenu.Items.Add(new ToolStripSeparator());
+
+                ToolStripMenuItem optionsMenuItem = (ToolStripMenuItem)contextMenu.Items.Add("Options");
+
+                PauseButton = optionsMenuItem.DropDownItems.Add("Pause", null, (s, e) =>
+                {
+                    if (MainLogic.IsPause)
+                    {
+                        PauseButton.Text = "Pause";
+                        MainLogic.Resume();
+                    }
+                    else
+                    {
+                        PauseButton.Text = "Resume";
+                        MainLogic.Pause();
+                    }
+                    
+                });
+
+                optionsMenuItem.DropDownItems.Add("Force Update", null, (s, e) =>
+                {
+                    MainLogic.ForceUpdate();
+                });
+
+                optionsMenuItem.DropDownItems.Add("Force Reconnect", null, (s, e) =>
+                {
+                    MainLogic.ForceReconnect();
+                });
 
                 HideButton = contextMenu.Items.Add("Show Console", null, (s, e) =>
                 {
@@ -90,7 +125,7 @@ namespace ADRPwinform
                 Console.WriteLine("Uncaught Error Detected.");
                 Console.WriteLine(ex);
                 SetConsoleWindowVisibility(true);
-                
+
                 Console.ReadKey();
                 notifyIcon.Dispose();
                 Application.Exit();
