@@ -86,10 +86,10 @@ namespace ADRPwinform
             }
             catch (Exception ex)
             {
+                File.WriteAllText("Error.txt", ex.ToString());
                 Console.WriteLine("Uncaught Error Detected.");
                 Console.WriteLine(ex);
                 SetConsoleWindowVisibility(true);
-                File.WriteAllText("Error.txt", ex.ToString());
                 
                 Console.ReadKey();
                 notifyIcon.Dispose();

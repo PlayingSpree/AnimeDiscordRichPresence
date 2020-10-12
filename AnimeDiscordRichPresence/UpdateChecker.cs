@@ -9,7 +9,7 @@ namespace AnimeDiscordRichPresence
     class UpdateChecker
     {
         // Release Version ============================
-        public const string currentVersion = "v1.1.0";
+        public const string currentVersion = "v1.1.1";
         // ============================================
         public static void Check()
         {
@@ -64,9 +64,10 @@ namespace AnimeDiscordRichPresence
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.WriteLine("Update Check Error.");
+                Console.WriteLine(e);
             }
         }
     }

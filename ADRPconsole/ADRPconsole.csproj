@@ -1,12 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>E:\Git Repo\AnimeDiscordRichPresence\AnimeDiscordRichPresence\12011220_1008817835815858_5428138400441508302_n_VjI_icon.ico</ApplicationIcon>
-    <AssemblyName>AnimeDiscordRichPresence</AssemblyName>
-    <RootNamespace>AnimeDiscordRichPresence</RootNamespace>
   </PropertyGroup>
 
   <Import Project="..\AnimeDiscordRichPresence\SharedProject.projitems" Label="Shared" />
