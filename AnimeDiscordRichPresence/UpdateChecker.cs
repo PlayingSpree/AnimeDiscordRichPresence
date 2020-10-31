@@ -9,7 +9,7 @@ namespace AnimeDiscordRichPresence
     class UpdateChecker
     {
         // Release Version ============================
-        public const string currentVersion = "v1.1.1";
+        public const string currentVersion = "v1.1.2";
         // ============================================
         public static void Check()
         {

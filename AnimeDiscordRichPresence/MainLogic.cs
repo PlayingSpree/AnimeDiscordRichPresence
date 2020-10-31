@@ -96,6 +96,18 @@ namespace AnimeDiscordRichPresence
             DiscordActivity.Clear();
         }
 
+        public static void ReloadConfig()
+        {
+            if (Config.Load())
+            {
+                Log("Config reloaded.");
+            }
+            else
+            {
+                Log("Cannot reload config.");
+            }
+        }
+
         public static void ForceUpdate()
         {
             lastAnime = AnimeName.GetAnime();
@@ -118,7 +130,6 @@ namespace AnimeDiscordRichPresence
             if (lastAnime != null)
             {
                 Log("Force reconnect discord.");
-
                 DiscordActivity.Set(lastAnime);
             }
             else
@@ -129,7 +140,7 @@ namespace AnimeDiscordRichPresence
 
         public static void Log(string text)
         {
-            Console.WriteLine(string.Format("[{0}] {1}", DateTime.Now.ToString("HH:mm:ss"), text));
+            Console.WriteLine(string.Format("[{0}] {1}", DateTime.Now.ToString(), text));
         }
     }
 }

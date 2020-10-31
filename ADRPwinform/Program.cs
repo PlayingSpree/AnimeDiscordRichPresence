@@ -3,7 +3,6 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -81,6 +80,45 @@ namespace ADRPwinform
                     }
                     
                 });
+
+                optionsMenuItem.DropDownItems.Add(new ToolStripSeparator());
+
+                optionsMenuItem.DropDownItems.Add("Open Config", null, (s, e) =>
+                {
+                    MainLogic.Log("Opening config.json...");
+                    try
+                    {
+                        try
+                        {
+                            var startInfo = new System.Diagnostics.ProcessStartInfo("conasdfig.json")
+                            {
+                                UseShellExecute = true
+                            };
+                            System.Diagnostics.Process.Start(startInfo);
+                        }
+                        catch (System.ComponentModel.Win32Exception ex)
+                        {
+                            if (ex.NativeErrorCode == 2)
+                            {
+                                MainLogic.Log("config.json not found.");
+                                return;
+                            }
+                            System.Diagnostics.Process.Start("notepad.exe", "config.json");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MainLogic.Log("Cannot open config.json.");
+                        Console.WriteLine(ex);
+                    }
+                });
+
+                optionsMenuItem.DropDownItems.Add("Reload Config", null, (s, e) =>
+                {
+                    MainLogic.ReloadConfig();
+                });
+
+                optionsMenuItem.DropDownItems.Add(new ToolStripSeparator());
 
                 optionsMenuItem.DropDownItems.Add("Force Update", null, (s, e) =>
                 {
