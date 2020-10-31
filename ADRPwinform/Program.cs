@@ -78,7 +78,6 @@ namespace ADRPwinform
                         PauseButton.Text = "Resume";
                         MainLogic.Pause();
                     }
-                    
                 });
 
                 optionsMenuItem.DropDownItems.Add(new ToolStripSeparator());
@@ -101,6 +100,7 @@ namespace ADRPwinform
                             if (ex.NativeErrorCode == 2)
                             {
                                 MainLogic.Log("config.json not found.");
+                                MessageBox.Show("config.json not found.", "ADRP");
                                 return;
                             }
                             System.Diagnostics.Process.Start("notepad.exe", "config.json");
@@ -109,6 +109,7 @@ namespace ADRPwinform
                     catch (Exception ex)
                     {
                         MainLogic.Log("Cannot open config.json.");
+                        MessageBox.Show("Cannot open config.json.", "ADRP");
                         Console.WriteLine(ex);
                     }
                 });
