@@ -85,26 +85,19 @@ namespace ADRPwinform
                 optionsMenuItem.DropDownItems.Add("Open Config", null, (s, e) =>
                 {
                     MainLogic.Log("Opening config.json...");
+                    if (!File.Exists("config.json"))
+                    {
+                        MainLogic.Log("config.json not found.");
+                        MessageBox.Show("config.json not found.", "ADRP");
+                    }
                     try
                     {
-                        try
+                        var startInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c \"config.json\"")
                         {
-                            var startInfo = new System.Diagnostics.ProcessStartInfo("conasdfig.json")
-                            {
-                                UseShellExecute = true
-                            };
-                            System.Diagnostics.Process.Start(startInfo);
-                        }
-                        catch (System.ComponentModel.Win32Exception ex)
-                        {
-                            if (ex.NativeErrorCode == 2)
-                            {
-                                MainLogic.Log("config.json not found.");
-                                MessageBox.Show("config.json not found.", "ADRP");
-                                return;
-                            }
-                            System.Diagnostics.Process.Start("notepad.exe", "config.json");
-                        }
+                            UseShellExecute = true,
+                            WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
                     }
                     catch (Exception ex)
                     {
