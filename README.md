@@ -3,7 +3,7 @@ Anime websites don't have discord rich presence... so I created one.
 
 ![Showcase Image](https://raw.githubusercontent.com/PlayingSpree/AnimeDiscordRichPresence/master/Doc/DiscordActivity.png)
 
-(Update: Actually there is [one](https://github.com/MALSync/MALSync/wiki/Discord-Rich-Presence). But this was already created so... ¯\_(ツ)_/¯)
+(Update: Actually there is [one](https://github.com/MALSync/MALSync/wiki/Discord-Rich-Presence). But this was already created so... ¯\\\_(ツ)_/¯)
 
 ## Feature
 
