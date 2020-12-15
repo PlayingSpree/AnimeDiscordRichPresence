@@ -7,12 +7,20 @@ Anime websites don't have discord rich presence... so I created one.
 
 ## Feature
 
-* Automatically scan window title on specific process for keyword that identify website name then use it to set discord activity (Rich presence).
+* Automatically scan window title on specific process for keywords that identify website name then use it to set discord activity (Rich presence).
 * Auto hide console window in system tray.
 * config.json for adding new website.
 
 ## Download
+
+Download available at the releases page
+
 https://github.com/PlayingSpree/AnimeDiscordRichPresence/releases
+
+Also require .NET Core Desktop Runtime v3.1
+
+Download at Microsoft website:
+https://dotnet.microsoft.com/download/dotnet-core/3.1
 
 ## How to use
 1. Extract .zip to any folder.
@@ -23,7 +31,7 @@ A console window will pop up and then auto hide in system tray. You can exit the
 
 ![System Tray Image](https://raw.githubusercontent.com/PlayingSpree/AnimeDiscordRichPresence/master/Doc/System%20Tray.png)
 
-Want to run at start up? [Guide for windows 10](https://support.microsoft.com/en-us/help/4558286/windows-10-add-an-app-to-run-automatically-at-startup)
+Want to run at startup? [Guide for windows 10](https://support.microsoft.com/en-us/help/4558286/windows-10-add-an-app-to-run-automatically-at-startup)
 
 ## Adding your website
 Find pattern from your anime website title
@@ -46,15 +54,15 @@ From above image. Open `config.json` in text editor and add this in the list of 
 ### Note
 `"Website":` set the text that will display below your anime title on discord for that website.
 
-You can put more text in the list if there are multiple pattern.
+You can put more text in the list if there are multiple patterns.
 
-You can put empty list if there is no infomation or you want to hide it.
+You can put empty list if there is no information or you want to hide it.
 
-Discord activity accept max 128 character.
+Discord activity accepts max 128 characters.
 
 ### More Example
 
-You want to add this 2 website...
+You want to add these 2 website...
 
 **Example website 1**: Website that website title start with anime title and multiple episode ending pattern
 
